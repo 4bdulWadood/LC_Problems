@@ -1,0 +1,58 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {number} a
+ * @param {number} b
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+
+ //Merge in Between in Linear Time
+var mergeInBetween = function(list1, a, b, list2) {
+    // We are given two linkedlists : list1 and list2, we need to remove the indexa to indexb of the list1 and add the whole of list2 in its place.
+
+    // list1=[0,1,2,3,4,5] and, a = 3, b = 4, list2 = [1000000, 1000001, 1000002]
+
+    // Create an empty listNode
+
+    // Create a conditional statement to choose the linkedlist we are adding from.
+    // We need two references to list1 and list2. The range is inclusive.
+
+    var iterator = 0
+    var mainList = new ListNode(list1.val, list1.next);
+    var output = mainList;
+
+    var loopCount = 0;
+
+    while(list1!=null){
+        if(iterator<a-1 || !list2){
+            list1 = list1.next
+            if(list1!=null){
+                mainList.next = new ListNode(list1.val, list1.next); 
+                mainList=mainList.next
+            }
+        }
+        else{
+            mainList.next = new ListNode(list2.val, list2.next); 
+            mainList=mainList.next
+            list2 = list2.next
+            //We still need to increment the linkedlist by (b-a).
+            if(loopCount<(b-a)+1){
+                list1 = list1.next
+                loopCount++
+            }
+        }
+        iterator++
+    }
+
+    return output
+
+//Time Complexity is O(N) - Linear Time
+//Space Complexity is O(N) - Linear Space Complexity because we are creating N entries in the mainList.
+};
