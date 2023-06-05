@@ -1,0 +1,46 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    //Iterate through both ll and l2 at the same time
+    //Initialize carry to 0
+    //Add the values of the current node.
+    //if sum > 9 then set carry to 1, else keep carry 0
+    let newLinkedlist = new ListNode();
+    let reference = newLinkedlist;
+    let carry = 0;
+    while(l1 || l2 || carry){
+        let val1 = 0
+        let val2 = 0
+
+        if(l1){
+            val1 = l1.val;
+            l1 = l1.next;
+        }
+
+        if(l2){
+            val2 = l2.val;
+            l2 = l2.next;
+        }
+
+        let sum = val1 + val2 + carry;
+        carry = sum > 9 ? 1 : 0;
+
+        newLinkedlist.next = new ListNode(sum%10, null)
+        newLinkedlist = newLinkedlist.next;
+    }
+   
+    reference = reference.next;
+    console.log(reference)
+
+    return reference;
+};
