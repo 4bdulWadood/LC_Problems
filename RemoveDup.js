@@ -218,7 +218,7 @@ resultLL.printList();
 
 
 //Implementation done in O(N+M) time complexity, where N is the size of the linked list and M is the size of the hashmap. N > M
-//O(N+M) space complexity, where N is the number of elements in the linkedlist and M is the number of elements in the hashmap. N > M
+//O(1+M) space complexity, where 1 is from the reference made to the linkedlist and M is the number of elements in the hashmap. 1 > M
 //Even without the Buffer (Hashmap) the space complexity would just be O(N) because of the LinkedList
 
 //But how would this algo be implemented without a hashmap (Buffer)?
