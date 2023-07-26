@@ -15,10 +15,12 @@ class MyQueue{
         this.stack2 = [];
     }
 
+    //Space Complexity O(1), Time Complexity O(1)
     enqueue(element){
         this.stack1.push(element);
     }
 
+    //Space Complexity O(1), Time Complexity O(n)
     dequeue(){
         this.stack2 = this.stack1.reverse();
         var dequeueValue = this.stack1.pop();
