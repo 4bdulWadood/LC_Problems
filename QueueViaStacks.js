@@ -9,7 +9,6 @@
 */
 
 class MyQueue{
-    //threshold set to 5 elements
     constructor(){
         this.stack1 = [];
         this.stack2 = [];
