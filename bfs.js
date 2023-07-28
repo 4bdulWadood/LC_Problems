@@ -8,7 +8,8 @@ var exBFSGraph = [
 
 //The array at index 0 shows which nodes the node at index 0 is connected to.
 //The output of the BFS function will be a list of key-value pairs where the key is the Element and the value is the distance from the root.
-
+//Time Complexity is O(N^2), where N is the number of nodes.
+//Space Complexity is O(V+E) where E is the number of edges and V is the number of vertices.
 
 function bfs(graph, root){
     var nodesLen = {};
