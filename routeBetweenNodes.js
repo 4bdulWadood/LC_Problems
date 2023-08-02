@@ -4,7 +4,7 @@
 //an Adjacency Matrix will be asymmetric in a directed unweighted graph.
 //An Iterative implementation of a BFS.
 
-//Time Complexity is O(V*E), where V is the number of Vertices and E is the number of edges.
+//Time Complexity is O(V+E), where V is the number of Vertices and E is the number of edges.
 //Space Complexity is O(n), where N represents the size of the array to hold the visited values.
 
 const adjacencyMatrix = [
