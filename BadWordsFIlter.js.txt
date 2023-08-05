@@ -30,8 +30,8 @@ This will reduce the time complexity of checking from O(n^2) (Consult the Genera
 Setting the value of the bad word in the hashmap to true and false, will allow
 for more efficient comparisons.
 
-Time Complexity is O(N*W^2 + B), N is the Length of the Message and W is the length of the Word and B is the length of the bad words array.
-Space Comeplexity is 
+Time Complexity is O(N*W^2 + B), N is the number of words in the Message and W is the average length of the Words and B is the number of the bad words.
+Space Comeplexity is O(M * L^2)
 */
 
 var BadWordsArr = ["*sig", "bob*", "*lol*", "be*dword", "*verybad*", "is"];
