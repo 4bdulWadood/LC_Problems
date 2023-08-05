@@ -1,0 +1,109 @@
+/*Solution for BadWordFilter Problem  Sentry.IO Coding Challenge
+Given a string containing bad words. 
+And a string containing the message.
+
+Filter the bad words out of the string and replace with asterisk.
+
+Bad Words Arr = ["*sig", "bob*", "*lol*"]
+The asterisk signifies which part of the word the bad word can be attached to, and still count.
+If no asterisks then that means a straightforward comparison can be made between the bad word and the word in the string.
+
+Input
+Hello my name is john lol
+Hi sig
+
+Output
+Hello my name is john *** 
+Hi *** 
+
+Optimization:
+Not every bad word belongs as a substring, knowing this the comparisons for certain bad words can be simplified.
+If we know which bad words belong as a substring we can perform difficult comparisons on them.
+
+Full Functionality:
+In its current implementation the code considers the word a bad word if even a substring is a bad word fo the bad words with asterisks before or after them:
+The proper implementation required checking if a bad word is appended or prepended onto a string.
+
+The Algorithm can be further optimized by, instead of checking if a bad word is every substring ,when it has * at the start or end, just check the start or the end.
+This will reduce the time complexity of checking from O(n^2) (Consult the Generate Substrings Algorithm) to O(N) because only one iteration is needed to determine if the start or end of the word is a bad word.
+
+Setting the value of the bad word in the hashmap to true and false, will allow
+for more efficient comparisons.
+
+Time Complexity is O(N*W^2 + B), N is the Length of the Message and W is the length of the Word and B is the length of the bad words array.
+Space Comeplexity is 
+*/
+
+var BadWordsArr = ["*sig", "bob*", "*lol*", "be*dword", "*verybad*", "is"];
+var Message = "verybado dlol mysich ise signal be*dword lolipop bobistansig";
+
+function BadWordFilter(BadWordsArr, Message){
+    //Create the Hashmap 
+    var map = new Map();
+
+    BadWordsArr.forEach(word=>{
+        if(word[0]=='*' || word[word.length - 1]=='*'){
+            //Set value to true, signifying that this bad word requires complex comparison.
+            //To make comparison easier remove the asterisk from the start or end or both and then add the word to the hashmap.
+            if(word[0]=="*"){
+                word = word.substring(1);
+            } 
+            if(word[word.length-1]=="*"){
+                word = word.slice(0, -1)
+            }
+
+            map.set(word, true);
+        } else {
+            //Set value to false, a simply comparison will suffice
+            map.set(word, false);
+        }
+    });
+
+    console.log(map)
+
+    var resStr = "";
+
+    function generateSubstrings(inputString) {
+        const substrings = [];
+      
+        for (let start = 0; start < inputString.length; start++) {
+          for (let end = start + 1; end <= inputString.length; end++) {
+            const substring = inputString.slice(start, end);
+            substrings.push(substring);
+          }
+        }
+      
+        return substrings;
+      }
+
+    Message = Message.split(" ");
+    Message.forEach(word => {
+            //Check if it exists as a whole in the bad words array, if it doesn't run
+            //the complex comparison algorithm.
+
+            if(map.has(word) && !map.get(word)){
+                //ADD N NUMBER OF ASTERISKS TO THE RESULTING STRING and also space.
+                //Modify word variable to be an N length word.
+                word = [...word].map(element=> "*").join("");
+            } else{
+                //Modify word variable to be an N length word.
+                var bool =  false;
+                generateSubstrings(word).forEach(substring => {
+                    bool = map.has(substring) ? true : false;
+                    if(bool&&map.get(substring)){
+                        word = [...substring].map(element=> "*").join("") + word.substring(substring.length)
+                    }
+                })
+            }
+            
+            resStr = resStr + word + " ";
+            
+
+    })
+
+    console.log(resStr)
+
+
+}
+
+BadWordFilter(BadWordsArr, Message)
