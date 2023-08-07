@@ -2,7 +2,7 @@
 Successor : Write an algorithm to find the "next" node (i.e. in-order successor) of a given node in a binary search tree. You may assume that each node has a link to its parent.
 implement an In-Order Traversal, (Left to Right). To find the in-order successor, check the left node first, then return itself.
 
-Space Complexity : O(1), No New Objects Created.
+Space Complexity : O(N), 
 Time Complexity : O(n), Visiting All Nodes
 
 */
