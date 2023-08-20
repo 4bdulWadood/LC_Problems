@@ -20,7 +20,7 @@ var groupAnagrams = function(strs) {
 
         Beats 93.6% of users with JS in Runtime and 86.50% of users with JavaScript in Memory!!!
 
-        Time Complexity is O(n) for the creation of the Map, time complexity of sorting is O(n^2), since we are sorting every element the time complexity will be O(n^2*N) or  O(n^3)
+        Time Complexity is O(n) for the creation of the Map, worst-case time complexity of sorting is O(n^2), since we are sorting every element the time complexity will be O(n^2*N) where N is the average length of the strings and N is the length of the strings Array
         Space Complexity : O(n + m) N is the size of the map, and M is the length of the str array.
     */
     var map = new Map();
