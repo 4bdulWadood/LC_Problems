@@ -1,0 +1,29 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxProduct = function(nums) {
+    //Input an array nums 
+    //Output an array consisting of the largest product.
+
+    //Brute force approach would be to iterate through the nums array and for each element,
+    //Multiply it with all elements ahead of it, if the product at each iteration of the nested for loop is greater than the current max then set it to max.
+    //The overall time complexity of this algorithm will be O(n*n!), because the nested loop reduces the value of the n variable by 1 at each increment.
+    if(nums.length==0||nums.length==1){
+        return nums[0];
+    }
+    
+   
+    var prod = 1;
+    var max = 0;
+    nums.forEach((num, index)=>{
+        var subArr = nums.slice(index);
+        subArr.forEach((num1, index1)=>{
+            prod*=num1;
+            prod>max?max=prod:null
+        })
+        prod = 1;
+    })
+    console.log(max)
+    return max;
+};
