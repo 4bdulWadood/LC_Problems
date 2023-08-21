@@ -8,7 +8,7 @@ var maxProduct = function(nums) {
 
     //Brute force approach would be to iterate through the nums array and for each element,
     //Multiply it with all elements ahead of it, if the product at each iteration of the nested for loop is greater than the current max then set it to max.
-    //The overall time complexity of this algorithm will be O(n*n!), because the nested loop reduces the value of the n variable by 1 at each increment.
+    //The overall time complexity of this algorithm will be O(n!).
     if(nums.length==0||nums.length==1){
         return nums[0];
     }
