@@ -1,0 +1,26 @@
+/*
+    Dynamic Programming based Iterative Solution to the Maximum Subarray Product Problem.
+    At each index ni the nums array calculate the CurrMax and CurrMin, using the previous index's CurrMac and CurrMIN, and the element at the index.
+    After that update the prevMax and prevMin variables to be the CurrMax and CurrMin calculated, and update the result variable based on the value of the currMax too obtain the maximum subarray product.
+    Often in DP Problems you might be required to find the optimal solution (largest product etc) This is a dynamic programming problem because we use the result of previous iteration (calculation of previous values for max and min) to obtain the new value of max and min.
+    
+    Time Complexity: O(n) where n represents the length of the nums string.
+    Space Complexity: O(1) because of the constant amount of space used 
+    
+*/
+
+var maxProduct = function(nums) {
+    let prevMax = nums[0];
+    let prevMin = nums[0];
+    let result = nums[0];
+    for (let i=1;i<nums.length;i++) {
+        curMax = Math.max(nums[i] * prevMax, nums[i], nums[i] * prevMin);
+        curMin = Math.min(nums[i] * prevMin, nums[i], nums[i] * prevMax);
+
+        prevMax = curMax
+        prevMin = curMin
+
+        result = Math.max(curMax, result);
+    }
+    return result;
+}
